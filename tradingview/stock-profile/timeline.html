@@ -1,0 +1,47 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Untitled</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <style>
+      html, body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript">
+       const query = window.location.search;
+       const urlParams = new URLSearchParams(query);
+       const symbol = urlParams.get('symbol') || "NASDAQ:AAPL";
+
+       const s = document.createElement('script');
+       s.type = "text/javascript";
+       s.src ="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js";
+       s.async = true;
+
+       s.innerHTML = JSON.stringify({
+           symbol: symbol,
+           colorTheme: "dark",
+           width: "100%",
+           height: "100%",
+           largeChartUrl: "",
+           displayMode: "adaptive",
+           isTransparent: false,
+           locale: "en"
+       })
+
+       document.querySelector(".tradingview-widget-container").appendChild(s);
+      </script>
+    </div>
+  </body>
+</html>

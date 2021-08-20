@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Untitled</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <style>
+      html, body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+      <script type="text/javascript">
+       const query = window.location.search;
+       const urlParams = new URLSearchParams(query);
+       const symbol = urlParams.get('symbol') || "NASDAQ:AAPL";
+       const urls = ["./cross_rates.html", "./heatmap.html"];
+
+       urls.forEach(
+           (url) => {
+               const i = document.createElement('iframe');
+               i.src = `${url}?symbol=${symbol}`;
+               i.frameBorder = "0";
+               i.width = "100%";
+               //i.height = "75%";
+               i.height = `${Math.floor(100 / urls.length)}%`;
+
+               document.body.appendChild(i);
+           }
+       );
+      </script>
+  </body>
+</html>
